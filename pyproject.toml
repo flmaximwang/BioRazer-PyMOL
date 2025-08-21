@@ -1,0 +1,19 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "pymol-plugins"
+description = "Some useful pymol plugins"
+authors = [
+    "Maxim Wang <wangfanlin2022@sibcb.ac.cn>"
+]
+version = "0.1.0"
+readme = "README.md"
+packages = [
+  { include = "extensions" }
+]
+
+[tool.poetry.dependencies]
+python = "~3.10"
+pymol = "^3"
