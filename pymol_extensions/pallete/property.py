@@ -1,25 +1,30 @@
-from pymol import cmd
-from pymol import stored
+from pymol import cmd, util
 
 
-def color_NOS(sele="all"):
+def color_by_element(sele="all"):
     cmd.color("red", f"({sele}) and elem O")
     cmd.color("blue", f"({sele}) and elem N")
     cmd.color("yellow", f"({sele}) and elem S")
 
 
-cmd.extend("color_NOS", color_NOS)
+cmd.extend("color_element", color_by_element)
 
 
-def color_NO(sele="all"):
-    cmd.color("red", f"({sele}) and elem O")
-    cmd.color("blue", f"({sele}) and elem N")
+def color_by_residue_property():
+    """
+    Color the residues in the current selection by their properties.
+    """
+    util.cbac("resn ALA+ILE+LEU+VAL+MET+CYS+PRO")
+    util.cbaw("resn TRP+TYR+PHE")
+    util.cbag("resn GLU+ASP")
+    util.cbas("resn HIS+ARG+LYS")
+    util.cbac("resn SER+THR+GLY+ASN+GLN")
 
 
-cmd.extend("color_NO", color_NO)
+cmd.extend("color_by_residue_property", color_by_residue_property)
 
 
-def color_AF_pLDDT(selection="all"):
+def color_by_plddt(selection="all"):
     """
     The function `color_AF_pLDDT` assigns colors to different selection ranges based on a specified
     threshold for a molecular visualization program.
@@ -106,4 +111,4 @@ def color_AF_pLDDT(selection="all"):
     cmd.deselect()
 
 
-cmd.extend("color_AF_pLDDT", color_AF_pLDDT)
+cmd.extend("color_by_plddt", color_by_plddt)
