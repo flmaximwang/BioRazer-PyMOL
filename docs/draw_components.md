@@ -1,5 +1,5 @@
 ```pymol
-import pymol_extensions.mark.arrow
+import biorazer_pymol.mark.arrow
 arrow_pass 
     point_x,
     point_y,

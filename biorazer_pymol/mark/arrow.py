@@ -99,7 +99,42 @@ def arrow_pass(
     """
     DESCRIPTION
 
-    Draws an arrow starting from a point and extending in the direction of a vector
+    Draw an arrow that passes through a point and follows a direction vector.
+    The arrow is centered at (point_x, point_y, point_z) and extends by
+    +/- length along the normalized direction vector.
+
+    USAGE
+
+    arrow_pass point_x, point_y, point_z, vector_x, vector_y, vector_z
+    [, length [, name [, cylinder_radius [, cone_ratio
+    [, r_color [, g_color [, b_color ]]]]]]]
+
+    ARGUMENTS
+
+    point_x, point_y, point_z = float
+        Coordinates of the point that the arrow passes through.
+
+    vector_x, vector_y, vector_z = float
+        Direction vector of the arrow (cannot be all zeros).
+
+    length = float, default=1.0
+        Half-length from center point to each side of the arrow.
+
+    name = str, default=arrow
+        Name of the CGO object to create.
+
+    cylinder_radius = float, default=0.1
+        Radius of the cylinder body.
+
+    cone_ratio = float, default=0.2
+        Cone length as a fraction of the full arrow length.
+
+    r_color, g_color, b_color = float, default=1.0, 1.0, 0.0
+        RGB color values in the range [0.0, 1.0].
+
+    EXAMPLE
+
+    arrow_pass 0, 0, 0, 1, 0, 0, 4, x_axis_arrow, 0.12, 0.2, 1, 0.2, 0.2
     """
     length = float(length)
     cylinder_radius = float(cylinder_radius)
